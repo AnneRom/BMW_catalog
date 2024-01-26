@@ -27,6 +27,7 @@ body
     margin: 0;
     background-color: #4D4D4D;
     color: white;
+    overflow-x: hidden;/**/
 	
 }
 
@@ -48,6 +49,7 @@ body
     text-align: center;
     font-weight: 100;/*вага-жирність шоифту*/
     letter-spacing: 2px;/*відстань між літерами*/
+    font-size: x-large;
 }
 .flex-nav a:hover
 {
@@ -61,9 +63,12 @@ body
 
 .wrapper
 {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 50px;
+    /*max-width: 1200px;
+    margin: 0 auto;*/
+   /* padding: 50px;*/
+   margin-left: 5%;
+   margin-right: 5%;
+   margin-top: 10px;
 }
 
 .flex-nav ul
@@ -81,12 +86,13 @@ body
 }
 .flex-nav .links
 {
-    flex-grow: 3;
+    /*padding-right: 7%;*/
+   flex-grow: 5;
 }
 .flex-nav .social
 {
-    flex-grow: -2;
-    font-size: 20px;
+    flex-grow: 1;
+    font-size: x-large;
 
    margin-left: 40px;/*//////////////*/
    /*align-self: flex-end;*/
@@ -95,8 +101,9 @@ body
 .flex-nav .lupa
 {
     flex-grow: 0;
-    font-size: 20px;
+    font-size: x-large;
 }
+
 
 .BMWcatalog
 {
@@ -106,9 +113,9 @@ body
     background-color: #DEDEDE;
     border: 1px solid black;
     border-radius: 10px;
-    margin: 20px;
+   /* margin: 20px;*/
     margin-top: 0;
-    margin-bottom: 0;
+    margin-bottom: 10px;
     padding: 10px;
 }
 
@@ -151,10 +158,12 @@ body
 {
  grid-template-rows: repeat(2, 1fr);
 }
-h1
+
+#one, #two, #three, #four, #five, #six, #seven, #eight
  {
-    margin-left: 20px;
+   margin-left: 20px;
  }
+
 .modelcar
 {
     padding: 20px;
@@ -204,7 +213,7 @@ h1
     color: white; 
 }
 
-.modelcar img:hover
+.modelcar a img:hover
 {
     /*opacity: 1.0; - задає рівень прозорості для елемента, 
     таким чином, щоб він став напівпрозорим, або навіть невидимим*/
@@ -213,7 +222,7 @@ h1
 
 }
 
-.modelcar img
+.modelcar a img
 {
     /*opacity: 0.5;*/
     transition: 0.5s;
@@ -225,16 +234,16 @@ h1
 {
     display: flex;
     align-items: center;
-}
 
+}
 .numers a
 {
     text-decoration: none;
     color: white;
-     border-bottom: 3px solid  #4D4D4D;
-     margin-left: 5px;
-     transition: 0.5s;
-
+    padding: 0 20px;
+    border-bottom: 3px solid  #4D4D4D;
+     /*margin-left: 5px;*/
+    transition: 0.5s;
 }
 .numers a:hover /*умова при наведені курсору миші*/
 {
@@ -242,12 +251,16 @@ h1
 }
 .numers a:before
 {
-    transition: 0.5s;
+   transition: 0.5s;
 }
 .numers a h1
 {
     text-align: center;
-    padding-right: 15px;
+}
+
+hr 
+{
+    margin: 0;
 }
 
 .AAA
@@ -264,13 +277,16 @@ footer
     grid-gap: 20px;
     border: 1px solid black;
     border-radius: 10px;
-    margin: 10px;
-    /*padding: 10px;*/
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding: 0px;
     justify-content: center;
     /*align-self: center;*/
 }
 
-footer h1
+footer h2
 {
     margin-left: 0;
 }
@@ -314,7 +330,7 @@ footer h1
     }
     .flex-nav #iconlupa
     {
-        padding-right: 30%;
+        padding-right: 40%;
         align-self: center;
     }
     .flex-nav .social
@@ -347,11 +363,9 @@ footer h1
     }
 
 
-
-
 }
 
-@media all and (max-width: 500px)
+@media all and (max-width: 600px)
 {
     body
     {
@@ -373,6 +387,29 @@ footer h1
     }
 }
 
+/* Стилі для кнопки "Повернутися вгору" */
+#scrollToTopButton {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 10px;
+    background-color: #DEDEDE;
+    color: #4D4D4D;
+    font-size: 20px;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    z-index: 1;
+
+}
+
+#scrollToTopButton:hover {
+    background-color: #0056b3;
+}
+
+
+
 /*
 lives = 10
 color = #4D4D4D
@@ -386,4 +423,289 @@ value - 10
 
 
 */
+
+.details
+{
+    position: fixed;
+    /*position: absolute;*/
+    width: 80vw;/*vw - відносно width*/
+    height: 100vh;/*vh - відносно height*/
+    background-color: #A5A5A5;
+    /*border: 2px solid black;*/
+    /*top: 0px;
+    right: 0px;*/
+    z-index: 2;
+    display: none;
+    clip-path: polygon(10% 0, 100% 0, 100% 100%, 0 100%);
+    animation-name: detailesAnimation;
+    animation-duration: 0.4s;
+    animation-timing-function: linear;/* визначає криву швидкості анімації*/
+    animation-fill-mode: forwards;
+    transform-origin: center center;
+    /*polygon(лівий верхній кут, правий верхній кут, правий нижній кут, ливій нижній кут);*/
+   /* transform: translateX(-150%);*/
+   /* transform-origin: center center;   Set the transform origin to the top-left corner */
+    /* animation: popupAnimation 0.5s linear; Specify the animation 
+    animation-fill-mode: forwards;*/
+}
+
+@keyframes detailesAnimation {
+
+    0%
+    {
+        transform: scale(0);
+        opacity: 0;
+
+
+    }
+
+    50%
+    {
+        transform: scale(0.5);
+        opacity: 0.7;
+
+    }
+
+    100%
+    {
+        transform: scale(1);
+        opacity: 1;
+        top: 0px;
+        left: 20vw;
+
+    }
+
+
+}
+
+/*
+@keyframes popupAnimation {
+    0% {
+        transform: scale(0); 
+        opacity: 0; 
+    }
+    50% {
+        transform: scale(0.5); 
+        opacity: 0.7; 
+    }
+    100% {
+        top: 0px;
+        left: 20vw;
+        transform: scale(1) translateX(0);
+        opacity: 1; 
+    }
+}*/
+
+.line
+{
+    width: 80vw;
+    height: 100vh;
+    position: absolute;
+}
+.line1
+{
+    clip-path: polygon(10% 0, 13% 0, 3% 100%, 0 100%);
+    background-color: #0A5FAC;
+}
+.line2
+{
+    clip-path: polygon(10% 0, 13% 0, 3% 100%, 0 100%);
+    background-color: #013976;
+    left: 3%;
+}
+.line3
+{
+    clip-path: polygon(10% 0, 13% 0, 3% 100%, 0 100%);
+    background-color: #E5230E;
+    left: 6%;
+}
+
+.details_content img
+{
+    transform: scale(0.9);
+    padding: 0px;
+    position: relative;
+    top: 5vh;
+    right: 16%;
+    cursor: pointer;/**/
+}
+
+.details_content h2
+{
+    font-size: xx-large; 
+    margin: 0px; 
+}
+
+.details_content h4
+{
+    font-size: 24px; 
+    margin: 0px; 
+}
+
+.details_content p
+{
+    font-size: 18px;  
+    text-align: left;
+}
+
+.details_content
+{
+    width: 50vw;
+    position: absolute;
+    left: 20%;
+    bottom: 15vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0px;
+    margin: 0px;
+}
+
+.close
+{
+   position: absolute;
+   top: 5vh;
+   right: 5vh;
+   font-size: xx-large;
+   text-decoration: none;
+   color: #4D4D4D;
+   cursor: pointer;/**/
+}
+
+.learn_more
+{
+    border: 5px solid #013976;
+    border-radius: 10px;
+    padding: 20px;
+    font-size: large;
+    align-self: center;
+    margin-top: 10px;
+}
+.learn_more a
+{
+    color: #4D4D4D;
+    text-decoration: none;
+}
+
+.learn_more:hover
+{
+    background-color: #DEDEDE;
+}
+
+.overlay {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.7);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: none;
+  z-index: 1;
+}
+
+.circle{
+    width: 200px;
+    height: 200px;
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+    left: 50vw;
+    top: 30vh;
+
+    transform: translate(-50%, -50%);
+
+    
+
+     /*width: 50px;
+     height: 50px;
+     background-color: white;
+     border-radius: 50%;
+     position: absolute;
+     top: 30%;
+     /*left: 30%;
+     transform: translate(-50%, -50%);*/
+    /* left: 0;
+     transform: translateX(-50%);
+     cursor: pointer;*/
+}
+
+/*.circle.animation {
+  animation: white-circle 2s cubic-bezier(0.785, 0.135, 0.15, 0.86) 1;
+}*/
+
+.circle-animation
+{
+    animation-name: white-circle;
+    animation-duration: 2s, 2s;/*тривалість анімації*/
+    animation-timing-function: cubic-bezier(0.785, 0.135, 0.15, 0.86);/*встановлює не лінійну швидкість ефекту переходу*/
+    animation-iteration-count: 1;
+   /* animation-direction: alternate;Анімація йде циклічно з початку до кінця, а потім з кінця до початку.*/
+   /* animation-play-state: paused;Призупинити анімацію.*/
+   /* animation-delay: 2s; затримка перед початком*/
+    
+}
+
+.details-animation
+{
+    animation-name: window;
+    animation-duration: 2s;/*тривалість анімації*/
+    animation-timing-function: linear;/*встановлює не лінійну швидкість ефекту переходу*/
+    animation-iteration-count: 1;
+  /*  animation-direction: alternate;*/
+}
+
+.win
+{
+    position: absolute;
+    z-index: 1000;
+    width: 100px;
+    height: 100px;
+    background-color: red;
+}
+
+@keyframes window
+{
+    0%
+    {
+        transform: translateX(-150%);
+    }
+
+    50%
+    {
+        transform: translateX(-75%);
+
+    }
+
+    100%
+    {
+        transform: translateX(0);
+
+    }
+    
+
+
+}
+
+@keyframes white-circle{
+    0%
+    {
+     
+        width: 50px;
+        height: 50px;
+        /* transform: translateX(-100%);*/
+        
+        
+
+    }
+
+    100%
+    {
+      
+        width: 200px;
+        height: 200px;
+       /* transform: translateX(0);*/
+       
+
+}
 
